@@ -37,7 +37,7 @@ header {
   
 }
 
-.proyecto1, .proyecto2, .proyecto3, .proyecto4 {
+.proyecto1, .proyecto2, .proyecto3, .proyecto4, .proyecto5 {
   width: 90%;
   height: auto;
   overflow: hidden;
@@ -101,7 +101,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
   }
 
-  .proyecto1, .proyecto2, .proyecto3, .proyecto4 {
+  .proyecto1, .proyecto2, .proyecto3, .proyecto4, .proyecto5 {
     width: 90%; 
   }
 }
