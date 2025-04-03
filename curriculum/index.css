@@ -1,0 +1,159 @@
+body{
+display: flex;
+justify-content: center;
+
+}
+
+.principal {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 70%;
+  border: 1px solid black;
+ 
+}
+
+.container1 {
+  background-color: rgb(255, 160, 36);
+  font-family: sans-serif;
+}
+
+.container1 img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: block;
+  padding: 50px;
+}
+
+
+.textos1 {
+  padding-left: 50px;
+  color: aliceblue;
+}
+
+h2 {
+  padding-left: 20px;
+  font-size: 60px;
+  color: rgb(52, 52, 52);
+}
+
+.textos2 ul li {
+  position: relative;
+  list-style: none;
+  margin: 10px 0;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+h3 {
+  color: rgb(253, 157, 30);
+}
+
+.container2 {
+  font-family: sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.informacion {
+  padding-left: 20px;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.linea1{
+border:none;
+  border-radius:5px;
+  height: 5px;
+  background-color: white;
+  width: 30px;
+  margin: 2px 2px;
+}
+
+.linea{
+  border:none;
+  border-radius:10px;
+  height: 5px;
+  background-color: rgb(253, 157, 30);
+  width: 30px;
+  margin: 5px 0px;
+}
+
+
+@media (max-width: 1366px){
+  .container1 img {
+    width: 250px; 
+    height: 250px; 
+    padding: 20px;}
+}
+
+
+@media (max-width: 1000px) {
+  .principal {
+    grid-template-columns: 1fr; 
+  }
+
+  .container1{
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .container1 img {
+    width: 200px; 
+    height: 200px; 
+    padding: 20px;
+  }
+
+  .textos1 {
+    padding-left: 30px;
+  }
+
+  h2 {
+    font-size: 40px; 
+    padding-left: 0;
+  }
+
+  .container2 {
+    padding: 0 20px; 
+  }
+
+  .informacion,
+  .habilidades,
+  .cursos,
+  .resumen {
+    padding-left: 0; 
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  .textos2 ul li {
+    font-size: 16px; 
+  }
+
+  h3 {
+    font-size: 18px; 
+  }
+}
+
+
+@media (max-width: 800px) {
+  .container1{
+    display: grid; 
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 800px) {
+.principal{
+justify-content: center;
+}
+
+
+}
