@@ -1,5 +1,5 @@
 * {
-  
+
   padding: 0;
   box-sizing: border-box;
 }
@@ -11,6 +11,7 @@ body {
 }
 
 .fondop {
+
   background-image: url('fondo.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -18,7 +19,7 @@ body {
 
 
 .principal {
-
+position: relative;
   font-family: 'Segoe UI';
   list-style-type: none;
   width: auto;
@@ -34,11 +35,12 @@ body {
 }
 
 .barra {
+  color: rgb(0, 0, 0);
+  font-size: 13px;
   display: flex;
   justify-content: space-between;
-  color: rgb(0, 0, 0);
-  padding: 10px;
-  font-size: 13px;
+  align-items: center;
+  padding: 20px 40px;
 }
 
 h1 {
@@ -182,34 +184,30 @@ h4 {
 }
 
 .menus {
-  position: relative;
-  left: 65px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   row-gap: 40px;
   max-width: 1200px;
   margin: auto;
-  bottom: 20px;
   margin-top: 60px;
-  transform: translateX(-80px);
   padding-bottom: 5px;
   min-height: 500px;
   height: auto;
 }
 
 
+
 .proyecto1,
 .proyecto2,
 .proyecto3,
 .proyecto4 {
-  font-family: sans-serif;
   padding-top: 10px;
   width: 280px;
   min-height: 440px;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 50px 60px rgba(0, 0, 0, 0.116);
+  box-shadow: 0 50px 60px rgba(0, 0, 0, 0.158);
   background-color: white;
   font-size: 30px;
   text-align: center;
@@ -248,6 +246,8 @@ h5 {
   font-size: 60px;
   text-align: center;
 }
+ 
+   
 
 h6 {
   position: relative;
@@ -282,7 +282,7 @@ h6 {
   padding: 25px;
   text-align: center;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.257);
 }
 
 .cu1:hover,
@@ -302,27 +302,304 @@ h6 {
 }
 
 /*Responsividad */
+@media (max-width: 1302px) {
 
-@media (max-width: 1724px) {
-  .navbar {
-    gap: 40px;
-  }
+.fondop{
+  background-size: 1284px auto ;
+}
+
+.imgc{
+  top: 160px;
+  right: 9%;
+
+}
 
   .menus {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    transform: none;
+    left: 0;
+    justify-items: center;
   }
 
-  .proyecto1, .proyecto2, .proyecto3, .proyecto4 {
-    width: 300px;
+  .proyecto1,
+  .proyecto2,
+  .proyecto3,
+  .proyecto4 {
+    min-height: 500px;
   }
 
-  h2 {
-    font-size: 3rem;
+}
+
+@media  (max-width: 1809px) {
+  .imgc {
+    position: absolute;
+    top: 120px; 
+    right: 10px;
   }
 
   .imgc img {
-    max-width: 80%;
+    width: auto;
+    height: auto;
   }
 }
 
+
+
+@media (max-width: 1024px) {
+
+  .fondop{
+    background-size: 1024px auto ;
+  }
+
+
+  .imgc img {
+    width: 350px;
+    right: 100px;
+  }
+
+  .menus {
+    grid-template-columns: repeat(2, 1fr);
+    transform: none;
+    left: 0;
+    justify-items: center;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  .imgc {
+    top: 150px;
+    right: 100px;
+  }
+}
+
+@media (max-width: 965px) {
+  .fondop {
+    background-size: 965px auto;
+  }
+
+  .navbar {
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+ .iconos {
+    margin-top: 10px;
+  }
+
+  .imgc img {
+    width: 280px;
+  }
+
+  .imgc {
+    top: 160px;
+    right: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
+
+  .menus {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    column-gap: 30px;
+    row-gap: 40px;
+  }
+
+  .proyecto1,
+  .proyecto2,
+  .proyecto3,
+  .proyecto4 {
+    width: 90%;
+    max-width: 300px;
+    
+  }
+
+  .bot1, .bot2 {
+    margin: 10px 5px;
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .container1, .container2 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .final {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cu1, .cu2, .cu3 {
+    width: 90%;
+    max-width: 320px;
+  }
+}
+
+
+
+  @media (max-width: 864px) {
+    .navbar {
+      position: relative;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .hungry {
+      position: relative;
+      top: 40px;
+    }
+  
+    .iconos {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  }
+  
+
+
+
+@media (max-width: 768px) {
+
+  .fondop{
+    background-size: contain;
+  }
+
+
+  .barra {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+
+  .iconos {
+    left: 0;
+    gap: 1px;
+    justify-content: flex-start;
+  }
+
+
+  .imgc {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .imgc img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .menus {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  h2 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .container2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .bot1,
+  .bot2 {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+
+@media (max-width: 652px) {
+  .barra {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .iconos {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .signup {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+.fondop{
+  background-size: contain; 
+}
+
+
+
+.navbar {
+  flex-direction: column;
+  align-items: center;
+}
+  .signup {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .iconos {
+    padding: 8px;
+  }
+
+
+  .proyecto1,
+  .proyecto2,
+  .proyecto3,
+  .proyecto4 {
+    width: 90%;
+    margin: auto;
+  }
+
+  h5 {
+    font-size: 40px;
+  }
+
+  h6 {
+    font-size: 16px;
+    top: -30px;
+  }
+}
