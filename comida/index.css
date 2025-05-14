@@ -540,10 +540,14 @@ h6 {
    align-items: center;
   }
 
+ 
+
   .imgc img {
-    width: 100%;
-    max-width: 300px;
-  }
+    display: block;
+    width: 400px;
+    max-width: 768px; 
+    margin: auto 160px;
+}
 
   .menus {
     grid-template-columns: 1fr;
@@ -612,6 +616,20 @@ h6 {
   }
 }
 
+  .imgc {
+    position: static;
+    margin-top: 20px;
+   align-items: center;
+  }
+
+ 
+
+  .imgc img {
+    position:static;
+    width: 400px;
+    max-width: 768px; 
+    margin: auto auto;
+}
 
 @media (max-width: 480px) {
   .fondop {
