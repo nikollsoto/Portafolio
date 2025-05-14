@@ -19,7 +19,7 @@ body {
 
 
 .principal {
-position: relative;
+  position: relative;
   font-family: 'Segoe UI';
   list-style-type: none;
   width: auto;
@@ -113,17 +113,23 @@ b {
 
 
 .container2 {
-  padding-left: 30px
+  padding-left: 80px
 }
 
+
+
 .hungry {
+  position: relative;
+  top: 40px;
   padding: 5px 20px;
   border-radius: 40px;
   border: solid 1px black;
   background-color: rgba(254, 255, 253, 0);
   color: rgb(0, 0, 0);
   font-size: 15px;
+
 }
+
 
 h2 {
   font-size: 80px;
@@ -132,11 +138,11 @@ h2 {
 .imgc {
   position: absolute;
   top: 130px;
-  right: 250px;
+  right: 20px;
 }
 
 .imgc img {
-  width: 500px;
+  width: 600px;
   max-width: 90%;
 }
 
@@ -160,7 +166,9 @@ h4 {
   font-size: 17px;
   line-height: 1.5;
   margin-top: 10px;
+  padding: 0 10px;
 }
+
 
 .bot1 {
   padding: 15px 35px;
@@ -186,16 +194,16 @@ h4 {
 .menus {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
+  column-gap: 45px;
   row-gap: 40px;
   max-width: 1200px;
-  margin: auto;
   margin-top: 60px;
+  margin-left: 75px;
+  margin-right: auto;
   padding-bottom: 5px;
   min-height: 500px;
   height: auto;
 }
-
 
 
 .proyecto1,
@@ -242,12 +250,17 @@ h4 {
   text-align: center;
 }
 
+.container3 {
+  padding-top: 100px;
+  margin-bottom: -120px;
+}
+
 h5 {
   font-size: 60px;
   text-align: center;
 }
- 
-   
+
+
 
 h6 {
   position: relative;
@@ -302,23 +315,61 @@ h6 {
 }
 
 /*Responsividad */
-@media (max-width: 1302px) {
+@media (max-width: 1809px) {
 
-.fondop{
-  background-size: 1284px auto ;
+  .imgc {
+    position: absolute;
+    top: 130px;
+    right: 20px;
+  }
+
+  .imgc img {
+    width: 600px;
+    max-width: 90%;
+  }
 }
 
-.imgc{
-  top: 160px;
-  right: 9%;
 
+
+@media (max-width: 1453px) {
+  .imgc {
+    position: absolute;
+    top: 130px;
+    right: 20px;
+  }
+
+  .imgc img {
+    width: 550px;
+    max-width: 90%;
+  }
 }
+
+
+
+@media (max-width: 1360px) {
+
+  .fondop {
+    background-size: 1360px auto;
+  }
+
+  .imgc {
+    top: 100px;
+    right: 10px;
+    max-width: 80%;
+  }
+
+
+  h2 {
+    font-size: 60px;
+  }
+
 
   .menus {
     grid-template-columns: repeat(2, 1fr);
     transform: none;
-    left: 0;
+    left: 5px;
     justify-items: center;
+
   }
 
   .proyecto1,
@@ -330,25 +381,16 @@ h6 {
 
 }
 
-@media  (max-width: 1809px) {
-  .imgc {
-    position: absolute;
-    top: 120px; 
-    right: 10px;
+
+@media (max-width: 1200px) {}
+.imgc img {
+    width: 450px;
   }
 
-  .imgc img {
-    width: auto;
-    height: auto;
-  }
-}
+@media (max-width: 1026px) {
 
-
-
-@media (max-width: 1024px) {
-
-  .fondop{
-    background-size: 1024px auto ;
+  .fondop {
+    background-size: 1026px auto;
   }
 
 
@@ -364,14 +406,6 @@ h6 {
     justify-items: center;
   }
 
-  h2 {
-    font-size: 50px;
-  }
-
-  .imgc {
-    top: 150px;
-    right: 100px;
-  }
 }
 
 @media (max-width: 965px) {
@@ -388,12 +422,13 @@ h6 {
   }
 
 
- .iconos {
+  .iconos {
     margin-top: 10px;
   }
 
+  
   .imgc img {
-    width: 280px;
+    width: 350px;
   }
 
   .imgc {
@@ -422,17 +457,19 @@ h6 {
   .proyecto4 {
     width: 90%;
     max-width: 300px;
-    
+
   }
 
-  .bot1, .bot2 {
+  .bot1,
+  .bot2 {
     margin: 10px 5px;
     font-size: 14px;
     padding: 12px 20px;
   }
 
-  .container1, .container2 {
-    padding-left: 15px;
+  .container1,
+  .container2 {
+    padding-left: 75px;
     padding-right: 15px;
   }
 
@@ -441,7 +478,9 @@ h6 {
     align-items: center;
   }
 
-  .cu1, .cu2, .cu3 {
+  .cu1,
+  .cu2,
+  .cu3 {
     width: 90%;
     max-width: 320px;
   }
@@ -449,32 +488,32 @@ h6 {
 
 
 
-  @media (max-width: 864px) {
-    .navbar {
-      position: relative;
-      justify-content: center;
-      text-align: center;
-    }
-  
-    .hungry {
-      position: relative;
-      top: 40px;
-    }
-  
-    .iconos {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 10px;
-    }
+@media (max-width: 864px) {
+  .navbar {
+    position: relative;
+    justify-content: center;
+    text-align: center;
   }
-  
+
+  .hungry {
+    position: relative;
+    top: 40px;
+  }
+
+  .iconos {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
 
 
 
 @media (max-width: 768px) {
 
-  .fondop{
+  .fondop {
     background-size: contain;
   }
 
@@ -483,6 +522,8 @@ h6 {
     flex-direction: row;
     align-items: flex-start;
     gap: 20px;
+    padding-right: 100px;
+
   }
 
 
@@ -496,7 +537,7 @@ h6 {
   .imgc {
     position: static;
     margin-top: 20px;
-    text-align: center;
+   align-items: center;
   }
 
   .imgc img {
@@ -529,6 +570,14 @@ h6 {
   .bot2 {
     width: 100%;
     margin: 10px 0;
+  }
+
+  .hungry {
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-bottom: 50px;
+
   }
 }
 
@@ -564,18 +613,18 @@ h6 {
 }
 
 
-
 @media (max-width: 480px) {
-.fondop{
-  background-size: contain; 
-}
+  .fondop {
+    background-size: contain;
+  }
 
 
 
-.navbar {
-  flex-direction: column;
-  align-items: center;
-}
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .signup {
     padding: 8px 14px;
     font-size: 14px;
@@ -585,13 +634,26 @@ h6 {
     padding: 8px;
   }
 
+  .menus {
+    grid-template-columns: 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+    row-gap: 30px;
+    column-gap: 0;
+    margin-top: 30px;
+    min-height: auto;
+  }
 
   .proyecto1,
   .proyecto2,
   .proyecto3,
   .proyecto4 {
     width: 90%;
-    margin: auto;
+    min-height: auto;
+    margin: 0 auto;
+    padding: 45px 10px;
+    font-size: 24px;
+
   }
 
   h5 {
@@ -601,5 +663,28 @@ h6 {
   h6 {
     font-size: 16px;
     top: -30px;
+  }
+}
+
+
+@media (max-width: 391px) {
+  .menus {
+    grid-template-columns: 1fr;
+    margin: 15px;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+
+
+
+  .proyecto1,
+  .proyecto2,
+  .proyecto3,
+  .proyecto4 {
+    padding: 45px auto;
+    font-size: 18px;
+
+
   }
 }
