@@ -29,7 +29,7 @@ header {
 
 .container2 {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
   grid-template-rows: 1fr 1fr 1fr;
   gap: 1.5rem;
   justify-items: center;
