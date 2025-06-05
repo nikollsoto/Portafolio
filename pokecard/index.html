@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokecard</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+    <!-- Fondo animado y overlay -->
+    <img src="https://i.pinimg.com/originals/11/1d/e1/111de1f8de50af0c4366851a4f0d9fee.gif" class="fondo">
+    <div class="overlay"></div>
+
+    <div class="principal">
+
+        <!-- Barra superior -->
+        <div class="barra">
+            <img src="apk.png" alt="Logo">
+            <div class="imgp"></div>
+        </div>
+
+        <!-- Contenedor de cartas -->
+        <div class="contenedor-cartas">
+
+            <!-- Carta 1 con efecto flip -->
+            <div class="carta" onclick="this.classList.toggle('flipped')">
+                <div class="carta-inner">
+                    
+                    <!-- Cara frontal -->
+                    <div class="carta-front">
+                        <h1 id="titulo1"></h1>
+                        <img src="" id="pok1" alt="Imagen Pokémon 1">
+                        <h2>Altura</h2>
+                        <p id="altura1"></p>
+                        <h2>Peso</h2>
+                        <p id="peso1"></p>
+                        <h3 id="numero1"></h3>
+                    </div>
+
+                    <!-- Cara trasera -->
+                    <div class="carta-back">
+     
+                        <h2 id="titulo1"></h2>
+                        <img src="" id="pok1" alt="Imagen Pokémon 1">
+                        <h2>Altura</h2>
+                        <p id="altura1"></p>
+                        <h2>Peso</h2>
+                        <p id="peso1"></p>
+                        <h3 id="numero1"></h3>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function getColorByType(type) {
+            const colors = {
+                fire: '#f08030',
+                water: '#6890f0',
+                grass: '#78c850',
+                electric: '#f8d030',
+                psychic: '#f85888',
+                ice: '#98d8d8',
+                dragon: '#7038f8',
+                dark: '#705848',
+                fairy: '#ee99ac',
+                normal: '#a8a878',
+                fighting: '#c03028',
+                flying: '#a890f0',
+                poison: '#a040a0',
+                ground: '#e0c068',
+                rock: '#b8a038',
+                bug: '#a8b820',
+                ghost: '#705898',
+                steel: '#b8b8d0'
+            };
+            return colors[type] || '#ddd';
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const id1 = Math.floor(Math.random() * 151) + 1;
+            const res1 = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id1}`);
+
+            const name = res1.data.name;
+            const img = res1.data.sprites.front_default;
+            const height = res1.data.height;
+            const weight = res1.data.weight;
+            const number = res1.data.id;
+            const type = res1.data.types[0].type.name;
+
+            document.getElementById("titulo1").textContent = name;
+            document.getElementById("pok1").src = img;
+            document.getElementById("altura1").textContent = height;
+            document.getElementById("peso1").textContent = weight;
+            document.getElementById("numero1").textContent = "#" + number;
+
+            // Color según tipo
+            const cartaFront = document.querySelector(".carta-front");
+            cartaFront.style.backgroundColor = getColorByType(type);
+        });
+    </script>
+
+</body>
+</html>
