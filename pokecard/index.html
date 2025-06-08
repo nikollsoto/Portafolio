@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokecard</title>
-    <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke-card</title>
+    <link rel="stylesheet" href="/index.css" />
 </head>
+
 <body>
 
-    <!-- Fondo animado y overlay -->
+
     <img src="https://i.pinimg.com/originals/11/1d/e1/111de1f8de50af0c4366851a4f0d9fee.gif" class="fondo">
     <div class="overlay"></div>
 
     <div class="principal">
 
-        <!-- Barra superior -->
+
         <div class="barra">
             <img src="apk.png" alt="Logo">
-            <div class="imgp"></div>
         </div>
 
-        <!-- Contenedor de cartas -->
+
         <div class="contenedor-cartas">
 
-            <!-- Carta 1 con efecto flip -->
+
             <div class="carta" onclick="this.classList.toggle('flipped')">
                 <div class="carta-inner">
-                    
-                    <!-- Cara frontal -->
+
+
                     <div class="carta-front">
+                        <div class="numero-pokemon" id="numero1"></div>
+                        <br><br>
                         <h1 id="titulo1"></h1>
                         <img src="" id="pok1" alt="Imagen Pokémon 1">
-                        <h2>Altura</h2>
+                        <h2><strong>Altura</strong></h2>
                         <p id="altura1"></p>
-                        <h2>Peso</h2>
+                        <h2><strong>Peso</strong></h2>
                         <p id="peso1"></p>
-                        <h3 id="numero1"></h3>
+                        <h2><strong>Tipo de criatura</strong></h2>
+                        <div id="tiposContainer" class="tipos-container"></div>
                     </div>
 
-                    <!-- Cara trasera -->
+
                     <div class="carta-back">
-     
-                        <h2 id="titulo1"></h2>
-                        <img src="" id="pok1" alt="Imagen Pokémon 1">
-                        <h2>Altura</h2>
-                        <p id="altura1"></p>
-                        <h2>Peso</h2>
-                        <p id="peso1"></p>
-                        <h3 id="numero1"></h3>
+                        <h2><strong>Habilidades</strong></h2>
+                        <div id="habilidadesBack"></div>
+
+                        <h2><strong>Debilidades</strong></h2>
+                        <div id="debilidadesBack"></div>
+
+                        <h2><strong>Estadísticas</strong></h2>
+                        <div id="estadisticasBack"></div>
                     </div>
-
-
 
                 </div>
             </div>
@@ -59,7 +61,6 @@
 
     </div>
 
-  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         function getColorByType(type) {
@@ -71,8 +72,8 @@
                 psychic: '#f85888',
                 ice: '#98d8d8',
                 dragon: '#7038f8',
-                dark: '#705848',
                 fairy: '#ee99ac',
+                dark: '#705848',
                 normal: '#a8a878',
                 fighting: '#c03028',
                 flying: '#a890f0',
@@ -95,19 +96,96 @@
             const height = res1.data.height;
             const weight = res1.data.weight;
             const number = res1.data.id;
-            const type = res1.data.types[0].type.name;
+
 
             document.getElementById("titulo1").textContent = name;
             document.getElementById("pok1").src = img;
             document.getElementById("altura1").textContent = height;
             document.getElementById("peso1").textContent = weight;
-            document.getElementById("numero1").textContent = "#" + number;
+            document.getElementById("numero1").textContent = "#" + String(number).padStart(3, '0');
 
-            // Color según tipo
+
+            const tipos = res1.data.types.map(t => t.type.name);
+            const tiposContainer = document.getElementById("tiposContainer");
+            tiposContainer.innerHTML = "";
+
+            tipos.forEach(tipo => {
+                let tag = document.createElement("div");
+                tag.className = "tipo-tag";
+                tag.textContent = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+                tag.style.backgroundColor = getColorByType(tipo);
+                tiposContainer.appendChild(tag);
+            });
+
+
             const cartaFront = document.querySelector(".carta-front");
-            cartaFront.style.backgroundColor = getColorByType(type);
+            const cartaBack = document.querySelector(".carta-back");
+            const colorFondo = getColorByType(tipos[0]);
+
+            cartaFront.style.backgroundColor = colorFondo;
+            cartaBack.style.backgroundColor = colorFondo;
+
+
+            const habilidadesBack = document.getElementById("habilidadesBack");
+            res1.data.abilities.forEach(habilidad => {
+                let button = document.createElement("button");
+                button.className = "habilidad";
+                button.textContent = habilidad.ability.name.toLowerCase();
+                habilidadesBack.appendChild(button);
+            });
+
+
+            const debilidadesBack = document.getElementById("debilidadesBack");
+            const debilidadesSet = new Set();
+            const tipoUrls = res1.data.types.map(tipo => tipo.type.url);
+
+            for (const url of tipoUrls) {
+                let tipoRes = await axios.get(url);
+                tipoRes.data.damage_relations.double_damage_from.forEach(d => {
+                    debilidadesSet.add(d.name);
+                });
+            }
+
+            debilidadesSet.forEach(debilidad => {
+                let button = document.createElement("button");
+                button.className = "debilidad";
+                button.textContent = debilidad.toLowerCase();
+                debilidadesBack.appendChild(button);
+            });
+
+
+            const statsContainer = document.getElementById("estadisticasBack");
+            res1.data.stats.forEach(stat => {
+                let contenedor = document.createElement("div");
+                contenedor.style.margin = "10px 0";
+
+                let texto = document.createElement("p");
+                texto.textContent = `${stat.stat.name}: ${stat.base_stat}/400`;
+                texto.style.fontWeight = "bold";
+                texto.style.fontSize = "14px";
+                texto.style.marginBottom = "5px";
+
+                let barra = document.createElement("div");
+                barra.className = "barra-estadistica";
+                barra.style.width = "100%";
+                barra.style.height = "12px";
+                barra.style.borderRadius = "6px";
+                barra.style.overflow = "hidden";
+
+                let progreso = document.createElement("div");
+                progreso.className = "progreso";
+                progreso.style.height = "100%";
+                progreso.style.width = `${(stat.base_stat / 400) * 100}%`;
+                progreso.style.backgroundColor = "#4caf50";
+                progreso.style.transition = "width 0.5s ease";
+
+                barra.appendChild(progreso);
+                contenedor.appendChild(texto);
+                contenedor.appendChild(barra);
+                statsContainer.appendChild(contenedor);
+            });
         });
     </script>
-
 </body>
+
 </html>
