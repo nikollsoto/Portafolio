@@ -154,14 +154,13 @@
       cartaBack.style.backgroundImage = degradado;
 
       const habilidadesBack = document.getElementById("habilidadesBack");
-      habilidadesBack.innerHTML = "";
-      res1.data.abilities.forEach(habilidad => {
-        let button = document.createElement("button");
-        button.className = "habilidad";
-        button.textContent = habilidad.ability.name.toLowerCase();
-        button.style.backgroundColor = getColorByType(habilidad.ability.name) || "#aaa";
-        habilidadesBack.appendChild(button);
-      });
+            res1.data.abilities.forEach(habilidad => {
+                let button = document.createElement("button");
+                button.className = "habilidad";
+                button.textContent = habilidad.ability.name.toLowerCase();
+                habilidadesBack.appendChild(button);
+            });
+
 
       const debilidadesBack = document.getElementById("debilidadesBack");
       debilidadesBack.innerHTML = "";
