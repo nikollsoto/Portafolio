@@ -253,13 +253,17 @@ body {
     min-width: 5%;
 }
 
-@media (max-width: 768px) {
-    .contenedor-cartas {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .carta {
-        width: 90%;
-    }
+@media (max-width: 783px) {
+.fondo{
+    width: auto;
+    height: 100%;
 }
+
+.overlay{
+ width: 100%;
+height: 100%;   
+}
+
+.barra img{
+    height: 100px;}
+}  
