@@ -382,10 +382,16 @@ h6 {
 }
 
 
-@media (max-width: 1200px) {}
+@media (max-width: 1200px) {
 .imgc img {
-    width: 650px;
-  }
+    width: 550px;
+  }}
+
+@media (max-width: 1195px) {
+.imgc img {
+    width: 450px;
+  }}
+
 
 @media (max-width: 1026px) {
 
