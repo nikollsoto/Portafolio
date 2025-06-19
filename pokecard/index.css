@@ -157,8 +157,8 @@ body {
 }
 
 .carta img {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     margin: 15px 0;
 }
