@@ -1,0 +1,97 @@
+   body {
+      background: linear-gradient(to right, #f8fdfc, #d9f9f2);
+      font-family: sans-serif;
+    }
+
+    .btn-success {
+      background-color: #4b8673;
+      border: none;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-success:hover {
+      background-color: #3e705f;
+      transform: scale(1.03);
+    }
+
+    .form-select,
+    .form-control {
+      border-radius: 0.5rem;
+      border: 1px solid #4b8673;
+    }
+
+    .card-body {
+      text-align: left;
+    }
+
+    .card-title {
+      text-align: center;
+      color: #4b8673;
+      margin-bottom: 10px;
+    }
+
+    .card-cita {
+      border-radius: 1rem;
+      border: 1px solid #d4ebe5;
+      box-shadow: 0 4px 12px rgba(75, 134, 115, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+
+    .card-cita:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(75, 134, 115, 0.2);
+    }
+
+    .card-cita img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      margin: 0 auto 15px;
+      display: block;
+      border-radius: 20%;
+      border: #b4dcd100;
+    }
+
+    .invalid-feedback {
+      display: block;
+      color: #8c0000;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .modal-header {
+      background-color: #a6d5c6;
+      color: white;
+      border-top-left-radius: 0.75rem;
+      border-top-right-radius: 0.75rem;
+    }
+
+    .btn-close-white {
+      filter: invert(1);
+    }
+
+    
+    .btn-warning.btn-sm {
+      background-color: #f4c66e;
+      border: none;
+      color: #5d4501;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-warning.btn-sm:hover {
+      background-color: #e2af42;
+    }
+
+    .btn-danger.btn-sm {
+      background-color: #a30021;
+      border: none;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-danger.btn-sm:hover {
+      background-color: #a00020;
+    }
