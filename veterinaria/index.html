@@ -1,251 +1,426 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Paws</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+<link rel="stylesheet" href="index.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bienestar de mascotas</title>
-  <link rel="stylesheet" href="index.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-</head>
-
-<body>
-  <div class="container py-4">
-    <h1 class="text-center mb-4"><strong>Calendario de citas🐾</strong></h1>
-    <div class="d-flex justify-content-between mb-3">
-      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">Agregar Cita</button>
-      <select id="filtroEstado" class="form-select w-auto">
-        <option value="">Todas</option>
-        <option value="Abierta">Abierta</option>
-        <option value="Terminada">Terminada</option>
-        <option value="Anulada">Anulada</option>
-      </select>
-      <input type="text" id="busqueda" class="form-control w-25" placeholder="Buscar por mascota o propietario" />
+  <body>
+    <div class="container py-4">
+      <img src="titulo.png" alt="titulo" class="logo mb-4" />
+      <hr>
+      
+      <div class="d-flex justify-content-between mb-3">
+        <input
+          type="text"
+          id="busqueda"
+          class="form-control w-25"
+          placeholder="Buscar por mascota o propietario"
+        />
+       
+        <select id="filtroEstado" class="form-select w-auto">
+          <option value="">Todas</option>
+          <option value="Abierta">Abierta</option>
+          <option value="Terminada">Terminada</option>
+          <option value="Anulada">Anulada</option>
+        </select>
+         <button class="btn btn-success"data-bs-toggle="modal"data-bs-target="#registroModal">
+          <strong>Agregar Cita</strong>
+        </button>
+      </div>
+      <div id="contenedorTarjetas" class="row g-4"></div>
     </div>
-    <div id="contenedorTarjetas" class="row g-4"></div>
-  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="registroModalLabel">Agregar Cita</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="formularioCita">
-            <input type="hidden" id="indiceEditar" />
-            <div class="mb-3">
-              <label for="nombreMascota" class="form-label">Nombre Mascota</label>
-              <input type="text" class="form-control" id="nombreMascota" />
-              <div class="invalid-feedback" id="error-nombreMascota"></div>
-            </div>
-            <div class="mb-3">
-              <label for="nombrePropietario" class="form-label">Nombre del Propietario</label>
-              <input type="text" class="form-control" id="nombrePropietario" />
-              <div class="invalid-feedback" id="error-nombrePropietario"></div>
-            </div>
-            <div class="mb-3">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="number" class="form-control" id="telefono" />
-              <div class="invalid-feedback" id="error-telefono"></div>
-            </div>
-            <div class="mb-3">
-              <label for="fechaCita" class="form-label">Fecha de Cita</label>
-              <input type="date" class="form-control" id="fechaCita" />
-              <div class="invalid-feedback" id="error-fechaCita"></div>
-            </div>
-            <div class="mb-3">
-              <label for="horaCita" class="form-label">Hora de Cita</label>
-              <input type="time" class="form-control" id="horaCita" />
-              <div class="invalid-feedback" id="error-horaCita"></div>
-            </div>
-            <div class="mb-3">
-              <label for="tipoMascota" class="form-label">Tipo de Mascota</label>
-              <select class="form-select" id="tipoMascota">
-                <option value="">Seleccione...</option>
-                <option value="Perro">Perro</option>
-                <option value="Gato">Gato</option>
-                <option value="Pájaro">Pájaro</option>
-                <option value="Hamster">Hamster</option>
-                <option value="Tortuga">Tortuga</option>
-                <option value="Conejo">Conejo</option>
-                <option value="Cobaya">Cobaya</option>
-                <option value="Erizo">Erizo</option>
-                <option value="Hurón">Hurón</option>
-                <option value="Otro">Otro</option>
-              </select>
-              <div class="invalid-feedback" id="error-tipoMascota"></div>
-            </div>
-            <div class="mb-3">
-              <label for="sintomas" class="form-label">Síntomas (máx. 400 caracteres)</label>
-              <textarea class="form-control" id="sintomas" maxlength="400" rows="3"></textarea>
-              <div class="invalid-feedback" id="error-sintomas"></div>
-            </div>
-            <div class="mb-3">
-              <label for="estado" class="form-label">Estado</label>
-              <select class="form-select" id="estado">
-                <option value="Abierta">Abierta</option>
-                <option value="Terminada">Terminada</option>
-                <option value="Anulada">Anulada</option>
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Cerrar</strong></button>
-              <button type="submit" class="btn btn-success"><strong>Guardar</strong></button>
-            </div>
-          </form>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="registroModal"
+      tabindex="-1"
+      aria-labelledby="registroModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registroModalLabel"><strong>Registro Paciente</strong></h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formularioCita">
+              <input type="hidden" id="indiceEditar" />
+
+              <!-- Primera fila: Nombre de la Mascota y Tipo de Mascota -->
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="nombremascota" class="form-label"
+                      ><strong>Nombre de la Mascota</strong></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombremascota"
+                    />
+                    <div class="error-message" id="error-nombremascota"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="tipoMascota" class="form-label"
+                      ><strong>Tipo de Mascota</strong></label
+                    >
+                    <select class="form-select" id="tipoMascota">
+                      <option value="">Seleccione...</option>
+                      <option value="Perro">Perro</option>
+                      <option value="Gato">Gato</option>
+                      <option value="Pájaro">Pájaro</option>
+                      <option value="Hamster">Hamster</option>
+                      <option value="Tortuga">Tortuga</option>
+                      <option value="Conejo">Conejo</option>
+                      <option value="Cobaya">Cobaya</option>
+                      <option value="Erizo">Erizo</option>
+                      <option value="Hurón">Hurón</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                    <div class="error-message" id="error-tipoMascota"></div>
+                  </div>
+                </div>
+              </div>
+
+              
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="nombrePropietario" class="form-label"
+                      ><strong>Nombre del Propietario</strong></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombrePropietario"
+                    />
+                    <div class="error-message" id="error-nombrePropietario"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="telefono" class="form-label"><strong>Teléfono</strong></label>
+                    <input type="text" class="form-control" id="telefono" />
+                    <div class="error-message" id="error-telefono"></div>
+                  </div>
+                </div>
+              </div>
+<hr>
+              
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="fechaCita" class="form-label"
+                      ><strong>Fecha de Cita</strong></label
+                    >
+                    <input type="date" class="form-control" id="fechaCita" />
+                    <div class="error-message" id="error-fechaCita"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="horaCita" class="form-label"
+                      ><strong>Hora de Cita</strong></label
+                    >
+                    <input type="time" class="form-control" id="horaCita" />
+                    <div class="error-message" id="error-horaCita"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cuarta fila: Síntomas -->
+              <div class="mb-3">
+                <label for="sintomas" class="form-label"
+                  ><strong>Motivo de consulta</strong></label
+                >
+                <textarea
+                  class="form-control"
+                  id="sintomas"
+                  maxlength="400"
+                  rows="3"
+                ></textarea>
+                <div class="error-message" id="error-sintomas"></div>
+              </div>
+
+              <!-- Quinta fila: Estado -->
+              <div class="mb-3">
+                <label for="estado" class="form-label"><strong>Estado</strong></label>
+                <select class="form-select" id="estado">
+                  <option value="Abierta">Abierta</option>
+                  <option value="Terminada">Terminada</option>
+                  <option value="Anulada">Anulada</option>
+                </select>
+              </div>
+
+              <!-- Botones de acción -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  <strong>Cerrar</strong>
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <strong>Guardar</strong>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Confirmación Eliminar -->
-  <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="confirmarEliminarModalLabel">Confirmar Eliminación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <strong>La cita se eliminará permanentemente.
-             ¿Está seguro de que desea continuar?</strong>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" onclick="eliminarConfirmado()">Eliminar</button>
+    <!-- Confirmación Eliminar -->
+    <div
+      class="modal fade"
+      id="confirmarEliminarModal"
+      tabindex="-1"
+      aria-labelledby="confirmarEliminarModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmarEliminarModalLabel">
+              Confirmar Eliminación
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <strong
+              >La cita se eliminará permanentemente. ¿Está seguro de que desea
+              continuar?</strong
+            >
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="eliminarConfirmado()"
+            >
+              Eliminar
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal Mensaje -->
-  <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="mensajeModalBody"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      // Datos iniciales
+      let citas = [];
+      const imagenesmascotas = {
+        Perro: "https://png.pngtree.com/png-vector/20231014/ourmid/pngtree-dog-face-png-illustration-png-image_10158271.png",
+        Gato: "https://static.vecteezy.com/system/resources/thumbnails/047/493/988/small_2x/hairy-fluffy-cat-playing-png.png",
+        Pájaro: "https://static.vecteezy.com/system/resources/previews/022/984/697/non_2x/bird-amazonian-motmot-drawing-feather-free-png.png",
+        Hamster: "https://static.vecteezy.com/system/resources/previews/026/748/774/non_2x/cute-little-hamster-png.png",
+        Tortuga: "https://static.vecteezy.com/system/resources/thumbnails/046/353/622/small/turtle-isolated-on-transparent-background-png.png",
+        Conejo: "https://static.vecteezy.com/system/resources/thumbnails/049/668/304/small_2x/cute-bunny-with-a-transparent-background-adorable-rabbit-image-free-download-high-quality-transparent-pet-animal-png.png",
+        Cobaya: "https://static.vecteezy.com/system/resources/previews/036/083/598/non_2x/ai-generated-bald-guinea-pig-isolated-on-transparent-background-free-png.png",
+        Erizo: "https://static.vecteezy.com/system/resources/previews/049/669/871/non_2x/cute-hedgehog-with-transparent-background-adorable-spiky-mammal-on-a-clear-background-isolated-hedgehog-for-design-projects-hedgehog-clipart-free-downloadable-hedgehog-image-high-resolution-hedgehog-picture-transparent-hedgehog-wildlife-photogr-png.png",
+        Hurón: "https://static.vecteezy.com/system/resources/previews/049/732/118/non_2x/ferret-closeup-of-face-free-png.png",
+        Otro: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJbagPL7Pm_Oz7uUyDOp4xHXdg0VBYmYbsUv6nuqCnLn97RucpQMK_bMWjRDNpq0AwRH8",
+      };
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    let citas = JSON.parse(localStorage.getItem("citas")) || [];
-    const imagenesmascotas = {
-      Perro: "https://png.pngtree.com/png-vector/20231014/ourmid/pngtree-dog-face-png-illustration-png-image_10158271.png",
-      Gato: "https://static.vecteezy.com/system/resources/thumbnails/047/493/988/small_2x/hairy-fluffy-cat-playing-png.png",
-      Pájaro: "https://static.vecteezy.com/system/resources/previews/022/984/697/non_2x/bird-amazonian-motmot-drawing-feather-free-png.png",
-      Hamster: "https://static.vecteezy.com/system/resources/previews/026/748/774/non_2x/cute-little-hamster-png.png",
-      Tortuga: "https://static.vecteezy.com/system/resources/thumbnails/046/353/622/small/turtle-isolated-on-transparent-background-png.png",
-      Conejo: "https://static.vecteezy.com/system/resources/thumbnails/049/668/304/small_2x/cute-bunny-with-a-transparent-background-adorable-rabbit-image-free-download-high-quality-transparent-pet-animal-png.png",
-      Cobaya: "https://static.vecteezy.com/system/resources/previews/036/083/598/non_2x/ai-generated-bald-guinea-pig-isolated-on-transparent-background-free-png.png",
-      Erizo: "https://static.vecteezy.com/system/resources/previews/049/669/871/non_2x/cute-hedgehog-with-transparent-background-adorable-spiky-mammal-on-a-clear-background-isolated-hedgehog-for-design-projects-hedgehog-clipart-free-downloadable-hedgehog-image-high-resolution-hedgehog-picture-transparent-hedgehog-wildlife-photogr-png.png",
-      Hurón: "https://static.vecteezy.com/system/resources/previews/049/732/118/non_2x/ferret-closeup-of-face-free-png.png",
-      Otro: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJbagPL7Pm_Oz7uUyDOp4xHXdg0VBYmYbsUv6nuqCnLn97RucpQMK_bMWjRDNpq0AwRH8"
-    };
-
-    function mostrarMensaje(titulo, mensaje) {
-      document.getElementById("mensajeModalLabel").textContent = titulo;
-      document.getElementById("mensajeModalBody").innerHTML = `<p>${mensaje}</p>`;
-      new bootstrap.Modal(document.getElementById("mensajeModal")).show();
-    }
-
-    function limpiarErrores() {
-      const errores = document.querySelectorAll(".invalid-feedback");
-      errores.forEach(e => e.textContent = "");
-    }
-
-    function validarDatos(datos) {
-      limpiarErrores();
-      let hayError = false;
-
-      if (!datos.nombreMascota) {
-        document.getElementById("error-nombreMascota").textContent = "Ingrese nombre del paciente";
-        hayError = true;
+      // Función para mostrar error en un campo específico
+      function mostrarError(campo, mensaje) {
+        const input = document.getElementById(campo);
+        const errorDiv = document.getElementById('error-' + campo);
+        
+        input.classList.add('is-invalid');
+        errorDiv.textContent = mensaje;
+        errorDiv.style.display = 'block';
       }
 
-      if (!datos.nombrePropietario) {
-        document.getElementById("error-nombrePropietario").textContent = "Ingrese nombre del propietario";
-        hayError = true;
+      // Función para limpiar error de un campo específico
+      function limpiarError(campo) {
+        const input = document.getElementById(campo);
+        const errorDiv = document.getElementById('error-' + campo);
+        
+        input.classList.remove('is-invalid');
+        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
       }
 
-      if (!datos.telefono) {
-        document.getElementById("error-telefono").textContent = "Digite su número para comunicarnos";
-        hayError = true;
-      } else if (!/^\d+$/.test(datos.telefono)) {
-        document.getElementById("error-telefono").textContent = "El teléfono debe contener solo números";
-        hayError = true;
+      // Función para limpiar todos los errores
+      function limpiarTodosLosErrores() {
+        const campos = ['nombremascota', 'tipoMascota', 'nombrePropietario', 'telefono', 'fechaCita', 'horaCita', 'sintomas'];
+        campos.forEach(campo => limpiarError(campo));
       }
 
-      if (!datos.fechaCita) {
-        document.getElementById("error-fechaCita").textContent = "Reserve una fecha válida";
-        hayError = true;
-      } else {
-        const fechaHoy = new Date().toISOString().split("T")[0];
-        if (datos.fechaCita < fechaHoy) {
-          document.getElementById("error-fechaCita").textContent = "La fecha debe ser igual o mayor a la actual";
-          hayError = true;
+      // Funciones de validación actualizadas
+      function validarNombre(nombre) {
+        limpiarError('nombremascota');
+        if (!nombre.trim()) {
+          mostrarError('nombremascota', 'El nombre de la mascota es obligatorio');
+          return false;
         }
-      }
-
-      if (!datos.horaCita) {
-        document.getElementById("error-horaCita").textContent = "Seleccione una hora válida";
-        hayError = true;
-      } else {
-        const [hora] = datos.horaCita.split(":").map(Number);
-        if (hora < 7 || hora > 21) {
-          document.getElementById("error-horaCita").textContent = "La hora debe estar entre 7:00AM y 09:00PM";
-          hayError = true;
+        if (nombre.length > 50) {
+          mostrarError('nombremascota', 'El nombre no puede exceder los 50 caracteres');
+          return false;
         }
-      }
-
-      if (!datos.tipoMascota) {
-        document.getElementById("error-tipoMascota").textContent = "Selecciona de que tipo es tu mascota";
-        hayError = true;
-      }
-
-      if (!datos.sintomas) {
-        document.getElementById("error-sintomas").textContent = "Describa los síntomas del paciente";
-        hayError = true;
-      }
-
-      return hayError;
-    }
-
-    function guardarLocalStorage() {
-      localStorage.setItem("citas", JSON.stringify(citas));
-    }
-
-    function pintarCards(filtro = "", textoBusqueda = "") {
-      const contenedorTarjetas = document.getElementById("contenedorTarjetas");
-      contenedorTarjetas.innerHTML = "";
-      const filtradas = citas.filter(c => {
-        if (filtro && c.estado !== filtro) return false;
-        if (textoBusqueda &&
-          !(c.nombreMascota.toLowerCase().includes(textoBusqueda.toLowerCase()) ||
-            c.nombrePropietario.toLowerCase().includes(textoBusqueda.toLowerCase()))) return false;
         return true;
-      });
-      filtradas.sort((a, b) => new Date(a.fechaCita + "T" + a.horaCita) - new Date(b.fechaCita + "T" + b.horaCita));
-      filtradas.forEach((cita, i) => {
-        const card = document.createElement("div");
-        card.className = "col-md-4";
-        card.innerHTML = `
+      }
+
+      function validarPropietario(propietario) {
+        limpiarError('nombrePropietario');
+        if (!propietario.trim()) {
+          mostrarError('nombrePropietario', 'El nombre del propietario es obligatorio');
+          return false;
+        }
+        if (propietario.length > 50) {
+          mostrarError('nombrePropietario', 'El nombre del propietario no puede exceder los 50 caracteres');
+          return false;
+        }
+        return true;
+      }
+
+      function validarTelefono(telefono) {
+        limpiarError('telefono');
+        if (!telefono.trim()) {
+          mostrarError('telefono', 'El teléfono es obligatorio');
+          return false;
+        }
+        if (!/^\d{10}$/.test(telefono)) {
+          mostrarError('telefono', 'El teléfono debe tener exactamente 10 dígitos');
+          return false;
+        }
+        return true;
+      }
+
+      function validarTipo(tipo) {
+        limpiarError('tipoMascota');
+        if (!tipo) {
+          mostrarError('tipoMascota', 'Debe seleccionar un tipo de mascota');
+          return false;
+        }
+        return true;
+      }
+
+      function validarFecha(fecha) {
+        limpiarError('fechaCita');
+        if (!fecha) {
+          mostrarError('fechaCita', 'La fecha es obligatoria');
+          return false;
+        }
+
+        const [anio, mes, dia] = fecha.split('-').map(Number);
+        const fechaSeleccionada = new Date(anio, mes - 1, dia);
+        fechaSeleccionada.setHours(0, 0, 0, 0);
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        const manana = new Date(hoy);
+        manana.setDate(hoy.getDate() + 1);
+
+        if (fechaSeleccionada < manana) {
+          mostrarError('fechaCita', 'La fecha debe ser a partir de mañana. No se permiten fechas anteriores ni la de hoy.');
+          return false;
+        }
+        return true;
+      }
+
+      function validarHora(hora) {
+        limpiarError('horaCita');
+        if (!hora) {
+          mostrarError('horaCita', 'La hora es obligatoria');
+          return false;
+        }
+
+        const [horaCita] = hora.split(':').map(Number);
+        if (horaCita < 8 || horaCita >= 21) {
+          mostrarError('horaCita', 'El horario de atención es de 8:00 AM a 9:00 PM');
+          return false;
+        }
+        return true;
+      }
+
+      function validarSintomas(sintomas) {
+        limpiarError('sintomas');
+        if (!sintomas.trim()) {
+          mostrarError('sintomas', 'Los síntomas son obligatorios');
+          return false;
+        }
+        if (sintomas.length > 400) {
+          mostrarError('sintomas', 'Los síntomas no pueden exceder 400 caracteres');
+          return false;
+        }
+        return true;
+      }
+
+      // Función principal de validación
+      function validarDatos(datos) {
+        let esValido = true;
+        
+        if (!validarNombre(datos.nombreMascota)) esValido = false;
+        if (!validarPropietario(datos.nombrePropietario)) esValido = false;
+        if (!validarTelefono(datos.telefono)) esValido = false;
+        if (!validarTipo(datos.tipoMascota)) esValido = false;
+        if (!validarFecha(datos.fechaCita)) esValido = false;
+        if (!validarHora(datos.horaCita)) esValido = false;
+        if (!validarSintomas(datos.sintomas)) esValido = false;
+        
+        return esValido;
+      }
+
+      function pintarCards(filtro = "", textoBusqueda = "") {
+        const contenedorTarjetas = document.getElementById("contenedorTarjetas");
+        contenedorTarjetas.innerHTML = "";
+        const filtradas = citas.filter((c) => {
+          if (filtro && c.estado !== filtro) return false;
+          if (
+            textoBusqueda &&
+            !(
+              c.nombreMascota.toLowerCase().includes(textoBusqueda.toLowerCase()) ||
+              c.nombrePropietario.toLowerCase().includes(textoBusqueda.toLowerCase())
+            )
+          )
+            return false;
+          return true;
+        });
+        filtradas.sort(
+          (a, b) =>
+            new Date(a.fechaCita + "T" + a.horaCita) -
+            new Date(b.fechaCita + "T" + b.horaCita)
+        );
+        filtradas.forEach((cita, i) => {
+          const card = document.createElement("div");
+          card.className = "col-md-4";
+          card.innerHTML = `
         <div class="card card-cita shadow-sm text-center">
           <div class="card-body">
-            <img src="${imagenesmascotas[cita.tipoMascota]}" alt="${cita.tipoMascota}" class="img-fluid"/>
             <h5 class="card-title">${cita.nombreMascota}</h5>
+            <img src="${imagenesmascotas[cita.tipoMascota]}" alt="${cita.tipoMascota}" class="img-fluid"/>
             <p class="card-text"><strong>Propietario:</strong> ${cita.nombrePropietario}<br>
             <strong>Teléfono:</strong> ${cita.telefono}<br>
             <strong>Fecha:</strong> ${cita.fechaCita} - ${cita.horaCita}<br>
@@ -259,82 +434,98 @@
           </div>
         </div>
       `;
-        contenedorTarjetas.appendChild(card);
-      });
-    }
-
-    // Manejar envío del formulario
-    document.getElementById("formularioCita").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const indice = document.getElementById("indiceEditar").value;
-      const nuevaCita = {
-        nombreMascota: document.getElementById("nombreMascota").value,
-        nombrePropietario: document.getElementById("nombrePropietario").value,
-        telefono: document.getElementById("telefono").value,
-        fechaCita: document.getElementById("fechaCita").value,
-        horaCita: document.getElementById("horaCita").value,
-        tipoMascota: document.getElementById("tipoMascota").value,
-        sintomas: document.getElementById("sintomas").value,
-        estado: document.getElementById("estado").value
-      };
-
-      if (validarDatos(nuevaCita)) return;
-
-      if (indice) {
-        citas[indice] = nuevaCita;
-        mostrarMensaje("Éxito", "Cita actualizada correctamente.");
-      } else {
-        citas.push(nuevaCita);
-        mostrarMensaje("Éxito", "Cita guardada correctamente.");
+          contenedorTarjetas.appendChild(card);
+        });
       }
 
-      guardarLocalStorage();
-      pintarCards();
-      this.reset();
-      document.getElementById("indiceEditar").value = "";
-      bootstrap.Modal.getInstance(document.getElementById("registroModal")).hide();
-    });
+      // Manejar envío del formulario
+      document.getElementById("formularioCita").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const indice = document.getElementById("indiceEditar").value;
+        const nuevaCita = {
+          nombreMascota: document.getElementById("nombremascota").value,
+          nombrePropietario: document.getElementById("nombrePropietario").value,
+          telefono: document.getElementById("telefono").value,
+          fechaCita: document.getElementById("fechaCita").value,
+          horaCita: document.getElementById("horaCita").value,
+          tipoMascota: document.getElementById("tipoMascota").value,
+          sintomas: document.getElementById("sintomas").value,
+          estado: document.getElementById("estado").value,
+        };
 
-    function editar(i) {
-      const cita = citas[i];
-      document.getElementById("nombreMascota").value = cita.nombreMascota;
-      document.getElementById("nombrePropietario").value = cita.nombrePropietario;
-      document.getElementById("telefono").value = cita.telefono;
-      document.getElementById("fechaCita").value = cita.fechaCita;
-      document.getElementById("horaCita").value = cita.horaCita;
-      document.getElementById("tipoMascota").value = cita.tipoMascota;
-      document.getElementById("sintomas").value = cita.sintomas;
-      document.getElementById("estado").value = cita.estado;
-      document.getElementById("indiceEditar").value = i;
-      new bootstrap.Modal(document.getElementById("registroModal")).show();
-    }
+        if (!validarDatos(nuevaCita)) return;
 
-    let indexEliminar = null;
-    function prepararEliminar(i) {
-      indexEliminar = i;
-      new bootstrap.Modal(document.getElementById("confirmarEliminarModal")).show();
-    }
+        if (indice) {
+          citas[indice] = nuevaCita;
+        } else {
+          citas.push(nuevaCita);
+        }
 
-    function eliminarConfirmado() {
-      if (indexEliminar !== null) {
-        citas.splice(indexEliminar, 1);
-        guardarLocalStorage();
         pintarCards();
-        indexEliminar = null;
-        bootstrap.Modal.getInstance(document.getElementById("confirmarEliminarModal")).hide();
+        this.reset();
+        limpiarTodosLosErrores();
+        document.getElementById("indiceEditar").value = "";
+        bootstrap.Modal.getInstance(document.getElementById("registroModal")).hide();
+      });
+
+      function editar(i) {
+        limpiarTodosLosErrores();
+        const cita = citas[i];
+        document.getElementById("nombremascota").value = cita.nombreMascota;
+        document.getElementById("nombrePropietario").value = cita.nombrePropietario;
+        document.getElementById("telefono").value = cita.telefono;
+        document.getElementById("fechaCita").value = cita.fechaCita;
+        document.getElementById("horaCita").value = cita.horaCita;
+        document.getElementById("tipoMascota").value = cita.tipoMascota;
+        document.getElementById("sintomas").value = cita.sintomas;
+        document.getElementById("estado").value = cita.estado;
+        document.getElementById("indiceEditar").value = i;
+        new bootstrap.Modal(document.getElementById("registroModal")).show();
       }
-    }
 
-    document.getElementById("filtroEstado").addEventListener("change", () => {
-      pintarCards(document.getElementById("filtroEstado").value, document.getElementById("busqueda").value);
-    });
+      let indexEliminar = null;
+      function prepararEliminar(i) {
+        indexEliminar = i;
+        new bootstrap.Modal(document.getElementById("confirmarEliminarModal")).show();
+      }
 
-    document.getElementById("busqueda").addEventListener("input", () => {
-      pintarCards(document.getElementById("filtroEstado").value, document.getElementById("busqueda").value);
-    });
+      function eliminarConfirmado() {
+        if (indexEliminar !== null) {
+          citas.splice(indexEliminar, 1);
+          pintarCards();
+          indexEliminar = null;
+          bootstrap.Modal.getInstance(document.getElementById("confirmarEliminarModal")).hide();
+        }
+      }
 
-    pintarCards();
-  </script>
-</body>
+      document.getElementById("filtroEstado").addEventListener("change", () => {
+        pintarCards(
+          document.getElementById("filtroEstado").value,
+          document.getElementById("busqueda").value
+        );
+      });
 
+      document.getElementById("busqueda").addEventListener("input", () => {
+        pintarCards(
+          document.getElementById("filtroEstado").value,
+          document.getElementById("busqueda").value
+        );
+      });
+
+      // Limpiar errores cuando se abre el modal
+      document.getElementById("registroModal").addEventListener("show.bs.modal", function() {
+        limpiarTodosLosErrores();
+      });
+
+      // Establecer fecha mínima
+      document.addEventListener('DOMContentLoaded', function() {
+        const fechaInput = document.getElementById('fechaCita');
+        const manana = new Date();
+        manana.setDate(manana.getDate() + 1);
+        fechaInput.min = manana.toISOString().split('T')[0];
+      });
+
+      pintarCards();
+    </script>
+  </body>
 </html>
