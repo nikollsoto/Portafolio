@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Paws</title>
+    <title>Patitas Felices</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -59,7 +59,7 @@
             <form id="formularioCita">
               <input type="hidden" id="indiceEditar" />
 
-              <!-- Primera fila: Nombre de la Mascota y Tipo de Mascota -->
+           
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="mb-3">
@@ -83,7 +83,7 @@
                       <option value="">Seleccione...</option>
                       <option value="Perro">Perro</option>
                       <option value="Gato">Gato</option>
-                      <option value="Pájaro">Pájaro</option>
+                      <option value="Ave">Ave</option>
                       <option value="Hamster">Hamster</option>
                       <option value="Tortuga">Tortuga</option>
                       <option value="Conejo">Conejo</option>
@@ -143,7 +143,7 @@
                 </div>
               </div>
 
-              <!-- Cuarta fila: Síntomas -->
+          
               <div class="mb-3">
                 <label for="sintomas" class="form-label"
                   ><strong>Motivo de consulta</strong></label
@@ -157,7 +157,7 @@
                 <div class="error-message" id="error-sintomas"></div>
               </div>
 
-              <!-- Quinta fila: Estado -->
+            
               <div class="mb-3">
                 <label for="estado" class="form-label"><strong>Estado</strong></label>
                 <select class="form-select" id="estado">
@@ -167,7 +167,7 @@
                 </select>
               </div>
 
-              <!-- Botones de acción -->
+            
               <div class="modal-footer">
                 <button
                   type="button"
@@ -186,7 +186,7 @@
       </div>
     </div>
 
-    <!-- Confirmación Eliminar -->
+    
     <div
       class="modal fade"
       id="confirmarEliminarModal"
@@ -236,12 +236,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-      // Datos iniciales
+      
       let citas = [];
       const imagenesmascotas = {
         Perro: "https://png.pngtree.com/png-vector/20231014/ourmid/pngtree-dog-face-png-illustration-png-image_10158271.png",
         Gato: "https://static.vecteezy.com/system/resources/thumbnails/047/493/988/small_2x/hairy-fluffy-cat-playing-png.png",
-        Pájaro: "https://static.vecteezy.com/system/resources/previews/022/984/697/non_2x/bird-amazonian-motmot-drawing-feather-free-png.png",
+        Ave: "https://static.vecteezy.com/system/resources/previews/022/984/697/non_2x/bird-amazonian-motmot-drawing-feather-free-png.png",
         Hamster: "https://static.vecteezy.com/system/resources/previews/026/748/774/non_2x/cute-little-hamster-png.png",
         Tortuga: "https://static.vecteezy.com/system/resources/thumbnails/046/353/622/small/turtle-isolated-on-transparent-background-png.png",
         Conejo: "https://static.vecteezy.com/system/resources/thumbnails/049/668/304/small_2x/cute-bunny-with-a-transparent-background-adorable-rabbit-image-free-download-high-quality-transparent-pet-animal-png.png",
@@ -251,7 +251,6 @@
         Otro: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJbagPL7Pm_Oz7uUyDOp4xHXdg0VBYmYbsUv6nuqCnLn97RucpQMK_bMWjRDNpq0AwRH8",
       };
 
-      // Función para mostrar error en un campo específico
       function mostrarError(campo, mensaje) {
         const input = document.getElementById(campo);
         const errorDiv = document.getElementById('error-' + campo);
@@ -261,7 +260,7 @@
         errorDiv.style.display = 'block';
       }
 
-      // Función para limpiar error de un campo específico
+   
       function limpiarError(campo) {
         const input = document.getElementById(campo);
         const errorDiv = document.getElementById('error-' + campo);
@@ -271,13 +270,13 @@
         errorDiv.style.display = 'none';
       }
 
-      // Función para limpiar todos los errores
+    
       function limpiarTodosLosErrores() {
         const campos = ['nombremascota', 'tipoMascota', 'nombrePropietario', 'telefono', 'fechaCita', 'horaCita', 'sintomas'];
         campos.forEach(campo => limpiarError(campo));
       }
 
-      // Funciones de validación actualizadas
+    
       function validarNombre(nombre) {
         limpiarError('nombremascota');
         if (!nombre.trim()) {
@@ -378,7 +377,7 @@
         return true;
       }
 
-      // Función principal de validación
+      
       function validarDatos(datos) {
         let esValido = true;
         
@@ -438,7 +437,7 @@
         });
       }
 
-      // Manejar envío del formulario
+      
       document.getElementById("formularioCita").addEventListener("submit", function (e) {
         e.preventDefault();
         const indice = document.getElementById("indiceEditar").value;
@@ -512,12 +511,12 @@
         );
       });
 
-      // Limpiar errores cuando se abre el modal
+      
       document.getElementById("registroModal").addEventListener("show.bs.modal", function() {
         limpiarTodosLosErrores();
       });
 
-      // Establecer fecha mínima
+      
       document.addEventListener('DOMContentLoaded', function() {
         const fechaInput = document.getElementById('fechaCita');
         const manana = new Date();
