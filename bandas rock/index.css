@@ -75,3 +75,77 @@ ul {
   margin-left: auto;
   margin-right: auto;
 }
+@media screen and (max-width: 1024px) {
+    .contenedor {
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor {
+    grid-template-columns: 1fr; 
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .card {
+    height: 350px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .contenedor {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .textos {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .boton {
+    width: 90%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .banner {
+    padding: 10px;
+  }
+
+  ul {
+    line-height: 30px;
+    margin-top: 0.5em;
+  }
+
+  .card {
+    height: 300px; 
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .contenedor {
+    padding: 5px;
+  }
+
+  .textos {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .boton {
+    width: 95%;
+    height: 35px;
+    font-size: 13px;
+  }
+
+  .banner {
+    padding: 5px;
+  }
+}
