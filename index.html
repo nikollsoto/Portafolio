@@ -1,45 +1,307 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Required Bootstrap files -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <title>Talonario</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Nikole Soto</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-code"></i> Disponible para proyectos
+            </div>
+            <h1>Bienvenid@ a mi archivo de proyectos</h1>
+            <p><strong>¡Transformando ideas en realidad!</strong></p>
+            <div class="cta-buttons">
+                <a href="#proyectos" class="btn-primary">
+                    <i class="fas fa-rocket"></i> Ver Proyectos
+                </a>
+                <a href="#contacto" class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Contactar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+        <div class="projects-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i> Proyectos Destacados
+                </div>
+                <h2 class="section-title">Mis Trabajos</h2>
+                <p class="section-description">Una selección de proyectos que demuestran mis habilidades técnicas y
+                    creatividad en el desarrollo frontend.</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Perfil Profesional</h3>
+                        <p class="project-description">Sitio web estático, el primer proyecto que logre hacer entrando a
+                            la carrera.</p>
+                        <div class="project-links">
+                            <a href="/mi perfil/actividad1.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Venta de tickets - Bandas de Rock</h3>
+                        <p class="project-description">Sitio web estático,compra de entradas para entrar a conciertos,
+                            nombre de bandas y
+                            contenido multimedia</p>
+                        <div class="project-links">
+                            <a href="/bandas rock/index (6).html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Quién Soy</h3>
+                        <p class="project-description">Sitio web estático, habilidades y
+                            experiencia profesional.</p>
+                        <div class="project-links">
+                            <a href="/quien soy/index.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="#FFFFFFFF" stroke-width="3" />
+                            <polygon points="16,13 29,20 16,27" fill="#FFFFFFFF" />
+                        </svg>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cómo Desplegar en Glitch</h3>
+                        <p class="project-description">Tutorial interactivo sobre cómo desplegar
+                            proyectos web en Glitch paso a paso.</p>
+                        <div class="project-links">
+                            <a href="https://youtu.be/wOhVMoqRO0c" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CV Digital Interactivo</h3>
+                        <p class="project-description">Sitio web estático, Currículum vitae digital.</p>
+                        <div class="project-links">
+                            <a href="/curriculum/index.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portal Gastronómico</h3>
+                        <p class="project-description">Sitio web estático de comida a domicilio.</p>
+                        <div class="project-links">
+                            <a href="/comida/index.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Pokecard Interactive</h3>
+                        <p class="project-description">Aplicación de cartas Pokémon con efectos 3D.</p>
+                        <div class="project-links">
+                            <a href="/pokecard/index.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Clínica Veterinaria</h3>
+                        <p class="project-description">Plataforma digital para agendar citas médicas de tu mascota.</p>
+                        <div class="project-links">
+                            <a href="/veterinaria/index.html" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                  <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Talonario</h3>
+                        <p class="project-description">Plataforma digital de rifas, balotas etc</p>
+                        <div class="project-links">
+                            <a href="https://talonario-t043.onrender.com" class="project-link primary">
+                                <i class="fas fa-eye"></i> Ver Proyecto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+           
+            <p>Estoy disponible para proyectos y oportunidades de trabajo remoto!</p>
+            <div class="social-links">
+                <a href="https://github.com/nikollsoto" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/nikole-shirel-rodriguez-soto-467021306/" class="social-link"
+                    target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=nikolshirelr@gmail.com" class="social-link"
+                    target="_blank">
+                    <i class="fas fa-envelope"></i> Gmail
+                </a>
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+    </section>
+
+    <script>
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-background');
+            if (heroBackground) {
+                const speed = scrolled * 0.3;
+                heroBackground.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+    </script>
+</body>
+
 </html>
-
-<template>
-  <div :class="['alert', typeClass, 'alert-dismissible', 'fade', 'show']" role="alert">
-    {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-</template>
-
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  type: {
-    type: String,
-    default: 'success'
-  },
-  message: {
-    type: String,
-    required: true
-  }
-})
-
-const typeClass = computed(() => `alert-${props.type}`)
-</script>
-
-<AlertComponent 
-  type="success" 
-  message="¡Operación exitosa!" 
-/>
