@@ -1,29 +1,29 @@
 <template>
   <div class="info-panel">
-    <h2 class="panel-title">Información del Talonario</h2>
+    <h2 class="panel-title">Información del Sorteo</h2>
     <div class="info-content" v-if="talonarioInfo.cantidadBoletas">
       <div class="info-item">
         <span>🏆</span>
-        <strong><p class="info-value">$ {{ formatNumber(talonarioInfo.premio) }}</p></strong>
+        <p class="info-value"><strong>$ {{ formatNumber(talonarioInfo.premio) }}</strong></p>
       </div>
-      
+
       <div class="info-item">
         <span>💲</span>
-        <strong><p class="info-value">$ {{ formatNumber(talonarioInfo.valorBoleta) }}</p></strong>
+        <p class="info-value"><strong>$ {{ formatNumber(talonarioInfo.valorBoleta) }}</strong></p>
       </div>
-      
+
       <div class="info-item">
         <span>🎰</span>
-        <strong><p class="info-value">{{ talonarioInfo.loteria }}</p></strong>
+        <p class="info-value"><strong>{{ talonarioInfo.loteria }}</strong></p>
       </div>
-      
+
       <div class="info-item">
         <span>📅</span>
-       <strong><p class="info-value">{{ formatDate(talonarioInfo.fecha) }}</p></strong>
+        <p class="info-value"><strong>{{ formatDate(talonarioInfo.fecha) }}</strong></p>
       </div>
 
       <button class="edit-button" @click="handleEdit">
-        <strong><span>Editar✍🏻</span></strong> 
+        <span><strong>Editar✍🏻</strong> </span>
       </button>
     </div>
   </div>
@@ -50,7 +50,7 @@ const handleEdit = () => {
 
 <style scoped>
 .info-panel {
-  background-color: #f8f9fa;
+  background-color: #e7e7e7;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -108,9 +108,5 @@ const handleEdit = () => {
 
 .edit-button:hover {
   background-color: #0043a4;
-}
-
-.edit-icon {
-  font-size: 1.2rem;
 }
 </style>
