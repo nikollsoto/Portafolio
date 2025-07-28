@@ -1,20 +1,5 @@
 <template>
   <div class="form-container">
-    <!-- Alerta de Bootstrap -->
-    <div v-if="alert.show" 
-         class="alert fade show position-fixed top-50 start-50 translate-middle" 
-         :class="[`alert-${alert.type}`, 'alert-dismissible']"
-         role="alert"
-         style="z-index: 1050; min-width: 300px;">
-      {{ alert.message }}
-      <button type="button" 
-              class="btn-close" 
-              data-bs-dismiss="alert" 
-              @click="alert.show = false"
-              aria-label="Close">
-      </button>
-    </div>
-
     <div class="form-header">
       <h2 class="form-title">CONFIGURA TU TALONARIO</h2>
       <button class="close-btn" @click="resetForm">×</button>
@@ -22,12 +7,13 @@
 
     <form @submit.prevent="handleSubmit" class="talonario-form">
       <div class="form-group">
-        <label>Premio</label>
-        <input v-model="formData.premio" type="number" min="1" placeholder="Ingrese el premio de la rifa" class="form-input" required />
+        <input v-model="formData.premio" type="number" min="1" placeholder="Ingrese el premio de la rifa"
+          class="form-input" required />
       </div>
 
       <div class="form-group">
-        <input v-model="formData.valorBoleta" type="number" min="1" placeholder="Ingrese valor de la boleta" class="form-input" required />
+        <input v-model="formData.valorBoleta" type="number" min="1" placeholder="Ingrese valor de la boleta"
+          class="form-input" required />
       </div>
 
       <div class="form-group">
@@ -35,9 +21,9 @@
           <option value="">Seleccione la lotería</option>
           <option value="Lotería de Boyacá">Lotería de Boyacá</option>
           <option value="Lotería de Cundinamarca">Lotería de Cundinamarca</option>
-          <option value="Lotería de Medellín">Lotería de Medellín</option>
-          <option value="Lotería de Bogotá">Lotería de Bogotá</option>
           <option value="Lotería de Antioquia">Lotería de Antioquia</option>
+          <option value="Lotería de Quindio">Lotería del Quindio</option>
+          <option value="Lotería de Santander">Lotería de Santander</option>
         </select>
       </div>
 
@@ -62,6 +48,7 @@
 
 <script setup>
 import { reactive, inject, computed, onMounted } from 'vue'
+import Swal from 'sweetalert2'
 
 const talonarioInfo = inject('talonarioInfo')
 const updateTalonarioInfo = inject('updateTalonarioInfo')
@@ -80,22 +67,13 @@ const formData = reactive({
   fecha: ''
 })
 
-// Estado para las alertas de Bootstrap
-const alert = reactive({
-  show: false,
-  message: '',
-  type: 'success'
-})
-
-const showAlert = (message, type = 'success') => {
-  alert.message = message
-  alert.type = type
-  alert.show = true
-  
-  // Auto ocultar después de 3 segundos
-  setTimeout(() => {
-    alert.show = false
-  }, 3000)
+const showAlert = (title, icon = 'success') => {
+  Swal.fire({
+    title,
+    icon,
+    confirmButtonColor: '#1e5aa8',
+    confirmButtonText: 'OK'
+  })
 }
 
 // Cargar datos si estamos editando
@@ -110,18 +88,18 @@ onMounted(() => {
 })
 
 const handleSubmit = () => {
-  if (formData.fecha < today.value) {
-    showAlert('La fecha no puede ser anterior a hoy.', 'danger')
-    return
-  }
-  
-  if (Number(formData.valorBoleta) > Number(formData.premio)) {
-    showAlert('El valor de la boleta no puede ser mayor al premio.', 'danger')
-    return
-  }
-  
   if (!formData.premio || !formData.valorBoleta || !formData.loteria || !formData.cantidadBoletas || !formData.fecha) {
     showAlert('Todos los campos son obligatorios.', 'warning')
+    return
+  }
+
+  if (formData.fecha < today.value) {
+    showAlert('La fecha no puede ser anterior a hoy.', 'error')
+    return
+  }
+
+  if (Number(formData.valorBoleta) > Number(formData.premio)) {
+    showAlert('El valor de la boleta no puede ser mayor al premio.', 'error')
     return
   }
 
@@ -131,11 +109,11 @@ const handleSubmit = () => {
       premio: Number(formData.premio),
       valorBoleta: Number(formData.valorBoleta)
     }
-    
+
     updateTalonarioInfo(datos)
     showAlert(talonarioInfo.premio ? 'Datos actualizados correctamente' : 'Talonario guardado exitosamente', 'success')
   } catch (error) {
-    showAlert('Error al procesar los datos', 'danger')
+    showAlert('Error al procesar los datos', 'error')
   }
 }
 
@@ -160,7 +138,7 @@ const resetForm = () => {
 }
 
 .form-header {
-  background-color: #1e5aa8;
+  background-color: #299E1CFF;
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -225,7 +203,7 @@ const resetForm = () => {
 }
 
 .submit-btn {
-  background-color: #1e5aa8;
+  background-color: #185D10FF;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -242,10 +220,5 @@ const resetForm = () => {
 
 .submit-btn:active {
   transform: translateY(1px);
-}
-
-/* Elimina los estilos personalizados de alerta que tenías antes */
-.alert {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
