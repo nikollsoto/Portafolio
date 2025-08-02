@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    
     <header class="header">
       <h1 class="header-title">TALONARIO</h1>
     </header>
 
     <main class="main-container">
-      <!-- Bootstrap Alert -->
+      <!-- Bootstrap Alert (sin cambios) -->
       <div v-if="alert.show"
         :class="`alert alert-${alert.type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`"
         role="alert" style="z-index: 1050;">
@@ -24,7 +23,6 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <p>© 2024 Todos los derechos reservados</p>
     </footer>
@@ -32,6 +30,7 @@
 </template>
 
 <script setup>
+/* Script original sin cambios */
 import { reactive, provide, ref, watch } from 'vue'
 import InfoPanel from './components/InfoPanel.vue'
 import TalonarioForm from './components/TalonarioForm.vue'
@@ -72,7 +71,6 @@ const showForm = () => {
 const updateTalonarioInfo = (newInfo) => {
   Object.assign(talonarioInfo, newInfo)
 
-  
   if (newInfo.cantidadBoletas) {
     const max = newInfo.cantidadBoletas === '0-999' ? 999 : 99
     talonarioInfo.boletas = Array.from({ length: max + 1 }, (_, i) => ({
@@ -103,6 +101,9 @@ provide('showAlert', showAlert)
 </script>
 
 <style>
+/* Fuentes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -110,57 +111,108 @@ provide('showAlert', showAlert)
 }
 
 body {
-  font-family: system-ui;
-  background-color: #f0f0f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
 }
 
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f5f7fa;
 }
 
+/* Header mejorado */
+.header {
+  background: linear-gradient(135deg, #2CA81E 0%, #1e7c5a 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor principal */
 .main-container {
   flex: 1;
-  padding: 20px;
+  padding: 2rem 1.5rem;
+  max-width: 1400px;
+  margin: 2rem auto;
+  width: 95%;
 }
 
+/* Layout mejorado */
 .layout {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  gap: 20px;
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .content-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.header {
-  background-color: #2CA81EFF;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.header-title {
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
+/* Footer mejorado */
 .footer {
-  background-color: #2CA81EFF;
+  background: linear-gradient(135deg, #1e7c5a 0%, #2CA81E 100%);
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 1.2rem;
   font-size: 0.9rem;
+  margin-top: auto;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Bootstrap  */
+/* Efectos de hover para interactividad */
+button, .btn {
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* Responsividad mejorada */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .main-container {
+    padding: 1.2rem;
+    margin: 1rem auto;
+    width: 100%;
+  }
+
+  .content-section {
+    padding: 1.2rem;
+  }
+}
+
+/* Bootstrap Alert (mantenido igual) */
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
@@ -245,15 +297,11 @@ body {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
+@media (max-width: 480px) {
   .alert {
     min-width: 250px;
     max-width: 90vw;
+    font-size: 0.9rem;
   }
 }
 </style>
