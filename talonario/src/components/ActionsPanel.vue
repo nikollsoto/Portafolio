@@ -481,7 +481,7 @@ function descargarPDF() {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
+/* Responsive */
 @media (max-width: 768px) {
   .actions-panel {
     padding: 18px;
