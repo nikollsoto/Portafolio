@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +40,7 @@
                     target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin"></i>
                 </a>
+
                 <a href="https://github.com/nikollsoto" class="social-icon" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i>
                 </a>
@@ -46,6 +48,9 @@
                     class="social-icon" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-envelope"></i>
                 </a>
+                <a href="https://wa.me/573123866406?text=Hola%20Nikole%2C%20vi%20tu%20portafolio%20y%20me%20interesar%C3%ADa%20trabajar%20contigo!."
+                    class="social-icon" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i></a>
             </div>
             <a href="cv.pdf" download class="btn btn-primary">
                 <i class="fas fa-download"></i> Descargar CV
@@ -250,14 +255,12 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Cursor glow effect
         const cursorGlow = document.querySelector('.cursor-glow');
         document.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
         });
 
-        // Project card tilt effect
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -322,7 +325,6 @@
             height: 100%;
             z-index: -1;
             background: rgba(0, 0, 0, 0.5);
-            /* Oscurece el video si es necesario */
         }
 
         .bg-animation::before,
@@ -480,37 +482,46 @@
         }
 
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.3rem;
+            color: var(--accent);
+            font-size: 1.5rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
         }
 
         .social-icon:hover {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-color: transparent;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.575);
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--primary);
-            font-size: 1.5rem;
-            animation: bounce 2s ease-in-out infinite;
-            cursor: pointer;
-        }
 
         @keyframes bounce {
 
@@ -749,6 +760,8 @@
                 padding: 1rem 5%;
             }
         }
+
+
         .cursor-glow {
             position: fixed;
             width: 20px;
@@ -763,4 +776,5 @@
         }
     </style>
 </body>
+
 </html>
